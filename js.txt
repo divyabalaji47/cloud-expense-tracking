@@ -1,0 +1,1036 @@
+/* ==========================================
+   CLOUD EXPENSE MANAGEMENT SYSTEM
+   Enterprise Edition v1.0
+========================================== */
+
+// ===============================
+// Expense Storage
+// ===============================
+
+let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+// ===============================
+// Form Elements
+// ===============================
+
+const expenseForm = document.getElementById("expenseForm");
+const expenseTable = document.getElementById("expenseTable");
+const searchExpense = document.getElementById("searchExpense");
+
+// Dashboard
+
+const totalExpenseCard = document.getElementById("totalExpense");
+
+// ===============================
+// Initialize
+// ===============================
+
+window.onload = function(){
+
+    displayExpenses();
+
+    updateDashboard();
+
+};
+
+// ===============================
+// Submit Expense
+// ===============================
+
+expenseForm.addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    const expense={
+
+        id:"EXP"+Date.now(),
+
+        employee:document.getElementById("employeeName").value,
+
+        department:document.querySelectorAll("select")[0].value,
+
+        category:document.getElementById("category").value,
+
+        amount:Number(document.getElementById("amount").value),
+
+        date:document.querySelector("input[type='date']").value,
+
+        status:"Pending"
+
+    };
+
+    expenses.push(expense);
+
+    saveExpenses();
+
+    displayExpenses();
+
+    updateDashboard();
+
+    expenseForm.reset();
+
+    alert("Expense Submitted Successfully.");
+
+});
+
+// ===============================
+// Save
+// ===============================
+
+function saveExpenses(){
+
+    localStorage.setItem("expenses",JSON.stringify(expenses));
+
+}
+
+// ===============================
+// Display Table
+// ===============================
+
+function displayExpenses(){
+
+    expenseTable.innerHTML="";
+
+    expenses.forEach((expense,index)=>{
+
+        expenseTable.innerHTML+=`
+
+<tr>
+
+<td>${expense.id}</td>
+
+<td>${expense.employee}</td>
+
+<td>${expense.department}</td>
+
+<td>${expense.category}</td>
+
+<td>₹ ${expense.amount}</td>
+
+<td>${expense.date}</td>
+
+<td>
+
+<span class="status pending">
+
+${expense.status}
+
+</span>
+
+</td>
+
+<td>
+
+<button class="action-btn view"
+onclick="viewExpense(${index})">
+
+View
+
+</button>
+
+<button class="action-btn edit"
+onclick="editExpense(${index})">
+
+Edit
+
+</button>
+
+<button class="action-btn delete"
+onclick="deleteExpense(${index})">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+    });
+
+}
+
+// ===============================
+// Dashboard
+// ===============================
+
+function updateDashboard(){
+
+    let total=0;
+
+    expenses.forEach(expense=>{
+
+        total+=expense.amount;
+
+    });
+
+    totalExpenseCard.innerHTML="₹ "+total.toLocaleString();
+
+}
+
+// ===============================
+// Delete
+// ===============================
+
+function deleteExpense(index){
+
+    if(confirm("Delete this expense?")){
+
+        expenses.splice(index,1);
+
+        saveExpenses();
+
+        displayExpenses();
+
+        updateDashboard();
+
+    }
+
+}
+
+// ===============================
+// View
+// ===============================
+
+function viewExpense(index){
+
+    const e=expenses[index];
+
+    alert(
+
+`Expense ID : ${e.id}
+
+Employee : ${e.employee}
+
+Department : ${e.department}
+
+Category : ${e.category}
+
+Amount : ₹${e.amount}
+
+Date : ${e.date}
+
+Status : ${e.status}`
+
+);
+
+}
+
+// ===============================
+// Edit
+// ===============================
+
+function editExpense(index){
+
+    const e=expenses[index];
+
+    document.getElementById("employeeName").value=e.employee;
+
+    document.getElementById("amount").value=e.amount;
+
+    document.getElementById("category").value=e.category;
+
+    expenses.splice(index,1);
+
+    saveExpenses();
+
+    displayExpenses();
+
+    updateDashboard();
+
+}
+
+// ===============================
+// Search
+// ===============================
+
+searchExpense.addEventListener("keyup",function(){
+
+    const value=this.value.toLowerCase();
+
+    const rows=document.querySelectorAll("#expenseTable tr");
+
+    rows.forEach(row=>{
+
+        row.style.display=row.innerText.toLowerCase().includes(value)
+
+        ? ""
+
+        : "none";
+
+    });
+
+});
+/* =====================================================
+   ENTERPRISE ANALYTICS MODULE
+===================================================== */
+
+// ===============================
+// CATEGORY TOTALS
+// ===============================
+
+function calculateCategoryTotals() {
+
+    let categoryData = {
+        Food: 0,
+        Travel: 0,
+        Shopping: 0,
+        Medical: 0,
+        Accommodation: 0,
+        Fuel: 0,
+        Training: 0,
+        Utilities: 0,
+        Miscellaneous: 0
+    };
+
+    expenses.forEach(expense => {
+
+        if (categoryData[expense.category] !== undefined) {
+
+            categoryData[expense.category] += expense.amount;
+
+        }
+
+    });
+
+    return categoryData;
+
+}
+
+// ===============================
+// MONTHLY TOTAL
+// ===============================
+
+function calculateMonthlyExpense() {
+
+    let total = 0;
+
+    const month = new Date().getMonth();
+
+    const year = new Date().getFullYear();
+
+    expenses.forEach(expense => {
+
+        const expenseDate = new Date(expense.date);
+
+        if (
+
+            expenseDate.getMonth() === month &&
+
+            expenseDate.getFullYear() === year
+
+        ) {
+
+            total += expense.amount;
+
+        }
+
+    });
+
+    return total;
+
+}
+
+// ===============================
+// PIE CHART
+// ===============================
+
+function loadCategoryChart() {
+
+    const chart = document.getElementById("categoryChart");
+
+    if (!chart) return;
+
+    const data = calculateCategoryTotals();
+
+    new Chart(chart, {
+
+        type: "pie",
+
+        data: {
+
+            labels: Object.keys(data),
+
+            datasets: [
+
+                {
+
+                    data: Object.values(data),
+
+                    backgroundColor: [
+
+                        "#2563eb",
+                        "#22c55e",
+                        "#f97316",
+                        "#ef4444",
+                        "#8b5cf6",
+                        "#14b8a6",
+                        "#f59e0b",
+                        "#6366f1",
+                        "#6b7280"
+
+                    ]
+
+                }
+
+            ]
+
+        }
+
+    });
+
+}
+
+// ===============================
+// BAR CHART
+// ===============================
+
+function loadDepartmentChart() {
+
+    const chart = document.getElementById("departmentChart");
+
+    if (!chart) return;
+
+    const departments = {};
+
+    expenses.forEach(expense => {
+
+        if (!departments[expense.department])
+
+            departments[expense.department] = 0;
+
+        departments[expense.department] += expense.amount;
+
+    });
+
+    new Chart(chart, {
+
+        type: "bar",
+
+        data: {
+
+            labels: Object.keys(departments),
+
+            datasets: [
+
+                {
+
+                    label: "Department Expense",
+
+                    data: Object.values(departments),
+
+                    backgroundColor: "#2563eb"
+
+                }
+
+            ]
+
+        }
+
+    });
+
+}
+
+// ===============================
+// LINE CHART
+// ===============================
+
+function loadMonthlyChart() {
+
+    const chart = document.getElementById("monthlyChart");
+
+    if (!chart) return;
+
+    let monthly = new Array(12).fill(0);
+
+    expenses.forEach(expense => {
+
+        const month = new Date(expense.date).getMonth();
+
+        monthly[month] += expense.amount;
+
+    });
+
+    new Chart(chart, {
+
+        type: "line",
+
+        data: {
+
+            labels: [
+
+                "Jan","Feb","Mar","Apr","May","Jun",
+
+                "Jul","Aug","Sep","Oct","Nov","Dec"
+
+            ],
+
+            datasets: [
+
+                {
+
+                    label: "Expense",
+
+                    data: monthly,
+
+                    borderColor: "#2563eb",
+
+                    backgroundColor: "#93c5fd",
+
+                    fill: true
+
+                }
+
+            ]
+
+        }
+
+    });
+
+}
+
+// ===============================
+// TREND CHART
+// ===============================
+
+function loadTrendChart() {
+
+    const chart = document.getElementById("trendChart");
+
+    if (!chart) return;
+
+    let last10 = expenses.slice(-10);
+
+    new Chart(chart, {
+
+        type: "line",
+
+        data: {
+
+            labels: last10.map(e => e.employee),
+
+            datasets: [
+
+                {
+
+                    label: "Recent Expense",
+
+                    data: last10.map(e => e.amount),
+
+                    borderColor: "#22c55e",
+
+                    backgroundColor: "#bbf7d0"
+
+                }
+
+            ]
+
+        }
+
+    });
+
+}
+
+// ===============================
+// REFRESH DASHBOARD
+// ===============================
+
+function refreshDashboard() {
+
+    updateDashboard();
+
+    loadCategoryChart();
+
+    loadDepartmentChart();
+
+    loadMonthlyChart();
+
+    loadTrendChart();
+
+}
+
+// ===============================
+// START
+// ===============================
+
+window.addEventListener("load", () => {
+
+    refreshDashboard();
+
+});
+
+// ===============================
+// LIVE CLOCK
+// ===============================
+
+function updateClock() {
+
+    let clock = document.getElementById("liveClock");
+
+    if (!clock) return;
+
+    clock.innerHTML = new Date().toLocaleString();
+
+}
+
+setInterval(updateClock,1000);
+
+// ===============================
+// NOTIFICATION
+// ===============================
+
+function showNotification(message){
+
+    const div=document.createElement("div");
+
+    div.className="notification";
+
+    div.innerHTML=message;
+
+    document.body.appendChild(div);
+
+    setTimeout(()=>{
+
+        div.remove();
+
+    },3000);
+
+}
+
+// ===============================
+// EXPORT JSON
+// ===============================
+
+function exportData(){
+
+    const data=JSON.stringify(expenses,null,2);
+
+    const blob=new Blob([data],{type:"application/json"});
+
+    const url=URL.createObjectURL(blob);
+
+    const a=document.createElement("a");
+
+    a.href=url;
+
+    a.download="ExpenseReport.json";
+
+    a.click();
+
+}
+/* ==========================================
+   ENTERPRISE UTILITIES
+   Part 3
+========================================== */
+
+// ===============================
+// DARK MODE
+// ===============================
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+
+        localStorage.setItem("theme", "dark");
+
+    } else {
+
+        localStorage.setItem("theme", "light");
+
+    }
+
+}
+
+window.addEventListener("load", () => {
+
+    const theme = localStorage.getItem("theme");
+
+    if (theme === "dark") {
+
+        document.body.classList.add("dark-mode");
+
+    }
+
+});
+
+// ===============================
+// COMPANY STATISTICS
+// ===============================
+
+function calculateStatistics() {
+
+    let highest = 0;
+    let lowest = 999999999;
+    let average = 0;
+
+    expenses.forEach(expense => {
+
+        if (expense.amount > highest)
+
+            highest = expense.amount;
+
+        if (expense.amount < lowest)
+
+            lowest = expense.amount;
+
+        average += expense.amount;
+
+    });
+
+    if (expenses.length > 0)
+
+        average = average / expenses.length;
+
+    console.log("Highest :", highest);
+    console.log("Lowest :", lowest);
+    console.log("Average :", average.toFixed(2));
+
+}
+
+// ===============================
+// BUDGET ALERT
+// ===============================
+
+const monthlyBudget = 50000;
+
+function budgetAlert() {
+
+    let total = 0;
+
+    expenses.forEach(expense => {
+
+        total += expense.amount;
+
+    });
+
+    if (total >= monthlyBudget) {
+
+        showNotification("⚠ Monthly Budget Limit Reached");
+
+    }
+
+}
+
+// ===============================
+// EXPORT CSV
+// ===============================
+
+function exportCSV() {
+
+    let csv = "ID,Employee,Department,Category,Amount,Date,Status\n";
+
+    expenses.forEach(expense => {
+
+        csv +=
+
+            expense.id + "," +
+
+            expense.employee + "," +
+
+            expense.department + "," +
+
+            expense.category + "," +
+
+            expense.amount + "," +
+
+            expense.date + "," +
+
+            expense.status + "\n";
+
+    });
+
+    const blob = new Blob([csv], {
+
+        type: "text/csv"
+
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+
+    a.href = url;
+
+    a.download = "Expense_Report.csv";
+
+    a.click();
+
+}
+
+// ===============================
+// APPROVE REQUEST
+// ===============================
+
+function approveExpense(index) {
+
+    expenses[index].status = "Approved";
+
+    saveExpenses();
+
+    displayExpenses();
+
+    showNotification("Expense Approved");
+
+}
+
+// ===============================
+// REJECT REQUEST
+// ===============================
+
+function rejectExpense(index) {
+
+    expenses[index].status = "Rejected";
+
+    saveExpenses();
+
+    displayExpenses();
+
+    showNotification("Expense Rejected");
+
+}
+
+// ===============================
+// FILTER STATUS
+// ===============================
+
+function filterStatus(status) {
+
+    const rows = document.querySelectorAll("#expenseTable tr");
+
+    rows.forEach((row, index) => {
+
+        if (
+
+            status === "All" ||
+
+            expenses[index].status === status
+
+        ) {
+
+            row.style.display = "";
+
+        } else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+}
+
+// ===============================
+// COMPANY INFORMATION
+// ===============================
+
+const company = {
+
+    name: "BIG BUCKS INNOVATION PRIVATE LIMITED",
+
+    system: "Cloud Expense Management System",
+
+    version: "Enterprise Edition v1.0",
+
+    cloud: "Amazon Web Services"
+
+};
+
+console.log(company);
+
+// ===============================
+// API CONFIGURATION
+// ===============================
+
+const API = {
+
+    BASE_URL:
+
+    "https://YOUR_API_GATEWAY.amazonaws.com/prod",
+
+    ADD:
+
+    "/expense",
+
+    GET:
+
+    "/expenses",
+
+    UPDATE:
+
+    "/expense/update",
+
+    DELETE:
+
+    "/expense/delete"
+
+};
+
+// ===============================
+// GET EXPENSES FROM AWS
+// ===============================
+
+async function getExpensesAWS() {
+
+    try {
+
+        const response = await fetch(
+
+            API.BASE_URL + API.GET
+
+        );
+
+        const data = await response.json();
+
+        console.log(data);
+
+    }
+
+    catch(error) {
+
+        console.log(error);
+
+    }
+
+}
+
+// ===============================
+// ADD EXPENSE TO AWS
+// ===============================
+
+async function addExpenseAWS(expense){
+
+    try{
+
+        const response = await fetch(
+
+            API.BASE_URL + API.ADD,
+
+            {
+
+                method:"POST",
+
+                headers:{
+
+                    "Content-Type":"application/json"
+
+                },
+
+                body:JSON.stringify(expense)
+
+            }
+
+        );
+
+        return await response.json();
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+// ===============================
+// UPDATE EXPENSE AWS
+// ===============================
+
+async function updateExpenseAWS(expense){
+
+    try{
+
+        await fetch(
+
+            API.BASE_URL + API.UPDATE,
+
+            {
+
+                method:"PUT",
+
+                headers:{
+
+                    "Content-Type":"application/json"
+
+                },
+
+                body:JSON.stringify(expense)
+
+            }
+
+        );
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+// ===============================
+// DELETE EXPENSE AWS
+// ===============================
+
+async function deleteExpenseAWS(id){
+
+    try{
+
+        await fetch(
+
+            API.BASE_URL + API.DELETE,
+
+            {
+
+                method:"DELETE",
+
+                headers:{
+
+                    "Content-Type":"application/json"
+
+                },
+
+                body:JSON.stringify({
+
+                    id:id
+
+                })
+
+            }
+
+        );
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+// ===============================
+// START APPLICATION
+// ===============================
+
+window.onload = function(){
+
+    displayExpenses();
+
+    updateDashboard();
+
+    calculateStatistics();
+
+    budgetAlert();
+
+    refreshDashboard();
+
+};
