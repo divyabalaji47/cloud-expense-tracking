@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cloud Expense Management System </title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ===========================
+NAVIGATION BAR
+=========================== -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+<h2>
+
+<i class="fa-solid fa-cloud"></i>
+
+</h2>
+
+</div>
+
+<ul>
+
+<li><a href="#">Home</a></li>
+
+<li><a href="#features">Features</a></li>
+
+<li><a href="#dashboard">Dashboard</a></li>
+
+<li><a href="#employees">Employees</a></li>
+
+<li><a href="#reports">Reports</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<div class="buttons">
+
+<button class="login-btn">
+
+Login
+
+</button>
+
+<button class="register-btn">
+
+Register
+
+</button>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- ===========================
+HERO SECTION
+=========================== -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<h5>
+
+Enterprise Cloud Solution
+
+</h5>
+
+<h1>
+
+Cloud Expense Management System
+
+</h1>
+
+<p>
+
+An enterprise-grade cloud application developed for managing employee expenses, reimbursement requests, approval workflows, departmental budgets, project spending, and financial analytics using modern cloud technologies.
+
+</p>
+
+<div class="hero-buttons">
+
+<button>
+
+Get Started
+
+</button>
+
+<button>
+
+Watch Demo
+
+</button>
+
+</div>
+
+<div class="statistics">
+
+<div>
+
+<h2>
+
+500+
+
+</h2>
+
+<p>
+
+Employees
+
+</p>
+
+</div>
+
+<div>
+
+<h2>
+
+25+
+
+</h2>
+
+<p>
+
+Departments
+
+</p>
+
+</div>
+
+<div>
+
+<h2>
+
+150K+
+
+</h2>
+
+<p>
+
+Transactions
+
+</p>
+
+</div>
+
+<div>
+
+<h2>
+
+99.99%
+
+</h2>
+
+<p>
+
+Availability
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<img src="images/dashboard.png" alt="Dashboard">
+
+</div>
+
+</section>
+
+<!-- ===========================
+ABOUT COMPANY
+=========================== -->
+
+<section class="company">
+
+
+<p>
+
+
+This Cloud Expense Management System enables organizations to efficiently monitor employee expenses, streamline reimbursement workflows, maintain financial transparency, and generate business intelligence reports using Amazon Web Services.
+
+</p>
+
+</section>
+
+<!-- ===========================
+SYSTEM HIGHLIGHTS
+=========================== -->
+
+<section class="highlights">
+
+<div class="card">
+
+<i class="fa-solid fa-users"></i>
+
+<h3>
+
+Employee Management
+
+</h3>
+
+<p>
+
+Manage thousands of employee expense records securely.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-wallet"></i>
+
+<h3>
+
+Expense Tracking
+
+</h3>
+
+<p>
+
+Track business expenses in real time.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-chart-column"></i>
+
+<h3>
+
+Financial Analytics
+
+</h3>
+
+<p>
+
+Generate reports and spending insights.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-cloud"></i>
+
+<h3>
+
+Cloud Hosted
+
+</h3>
+
+<p>
+
+Hosted securely on Amazon Web Services.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===========================
+KEY FEATURES
+=========================== -->
+
+<section id="features">
+
+<h1>
+
+Enterprise Features
+
+</h1>
+
+<div class="feature-grid">
+
+<div class="feature-box">
+
+<i class="fa-solid fa-file-invoice-dollar"></i>
+
+<h3>
+
+Expense Submission
+
+</h3>
+
+</div>
+
+<div class="feature-box">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<h3>
+
+Approval Workflow
+
+</h3>
+
+</div>
+
+<div class="feature-box">
+
+<i class="fa-solid fa-building"></i>
+
+<h3>
+
+Department Management
+
+</h3>
+
+</div>
+
+<div class="feature-box">
+
+<i class="fa-solid fa-user-group"></i>
+
+<h3>
+
+Employee Management
+
+</h3>
+
+</div>
+
+<div class="feature-box">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h3>
+
+Analytics Dashboard
+
+</h3>
+
+</div>
+
+<div class="feature-box">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<h3>
+
+Role Based Access
+
+</h3>
+
+</div>
+
+<div class="feature-box">
+
+<i class="fa-solid fa-bell"></i>
+
+<h3>
+
+Notifications
+
+</h3>
+
+</div>
+
+<div class="feature-box">
+
+<i class="fa-solid fa-database"></i>
+
+<h3>
+
+Secure Database
+
+</h3>
+
+</div>
+
+</div>
+
+</section>
+ <!-- ===========================
+ADMIN DASHBOARD
+=========================== -->
+
+<section id="dashboard" class="dashboard">
+
+<div class="dashboard-header">
+
+<h1>Enterprise Dashboard</h1>
+
+<p>Welcome back, Finance Administrator</p>
+
+</div>
+
+<div class="dashboard-cards">
+
+<div class="dashboard-card">
+
+<i class="fa-solid fa-wallet"></i>
+
+<h2 id="totalExpense">₹ 12,85,650</h2>
+
+<p>Total Company Expense</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<i class="fa-solid fa-building"></i>
+
+<h2>18</h2>
+
+<p>Departments</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<i class="fa-solid fa-users"></i>
+
+<h2>524</h2>
+
+<p>Employees</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<i class="fa-solid fa-file-circle-check"></i>
+
+<h2>248</h2>
+
+<p>Approved Claims</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<i class="fa-solid fa-hourglass-half"></i>
+
+<h2>32</h2>
+
+<p>Pending Requests</p>
+
+</div>
+
+<div class="dashboard-card">
+
+<i class="fa-solid fa-circle-xmark"></i>
+
+<h2>8</h2>
+
+<p>Rejected Claims</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+EMPLOYEE PROFILE
+=========================== -->
+
+<section id="employees" class="employee-profile">
+
+<h1>Employee Information</h1>
+
+<div class="employee-card">
+
+<div class="profile-image">
+
+<img src="images/profile.png" alt="Employee">
+
+</div>
+
+<div class="profile-details">
+
+<h2>Divya B</h2>
+
+<p><strong>Employee ID :</strong> EMP1024</p>
+
+<p><strong>Department :</strong> Information Technology</p>
+
+<p><strong>Designation :</strong> Software Engineer Intern</p>
+
+<p><strong>Email :</strong> divyacloud@gmail.com</p>
+
+<p><strong>Phone :</strong> +91 9876543210</p>
+
+<p><strong>Manager :</strong> Cloud Solutions Lead</p>
+
+<p><strong>Location :</strong> Chennai</p>
+
+<p><strong>Status :</strong> Active</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+ADD EXPENSE FORM
+=========================== -->
+
+<section class="expense-form">
+
+<h1>Submit Expense Request</h1>
+
+<form id="expenseForm">
+
+<div class="row">
+
+<div class="input-box">
+
+<label>Expense ID</label>
+
+<input type="text" value="AUTO GENERATED" readonly>
+
+</div>
+
+<div class="input-box">
+
+<label>Employee ID</label>
+
+<input type="text" value="EMP1024">
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-box">
+
+<label>Employee Name</label>
+
+<input type="text" id="employeeName">
+
+</div>
+
+<div class="input-box">
+
+<label>Department</label>
+
+<select>
+
+<option>Information Technology</option>
+
+<option>Finance</option>
+
+<option>Human Resource</option>
+
+<option>Marketing</option>
+
+<option>Sales</option>
+
+<option>Administration</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-box">
+
+<label>Project Name</label>
+
+<input type="text">
+
+</div>
+
+<div class="input-box">
+
+<label>Expense Category</label>
+
+<select id="category">
+
+<option>Travel</option>
+
+<option>Food</option>
+
+<option>Accommodation</option>
+
+<option>Fuel</option>
+
+<option>Medical</option>
+
+<option>Shopping</option>
+
+<option>Office Supplies</option>
+
+<option>Utilities</option>
+
+<option>Training</option>
+
+<option>Client Meeting</option>
+
+<option>Miscellaneous</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-box">
+
+<label>Expense Amount</label>
+
+<input type="number" id="amount">
+
+</div>
+
+<div class="input-box">
+
+<label>GST (%)</label>
+
+<input type="number">
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-box">
+
+<label>Currency</label>
+
+<select>
+
+<option>INR</option>
+
+<option>USD</option>
+
+<option>EUR</option>
+
+</select>
+
+</div>
+
+<div class="input-box">
+
+<label>Payment Method</label>
+
+<select>
+
+<option>Cash</option>
+
+<option>Credit Card</option>
+
+<option>Debit Card</option>
+
+<option>UPI</option>
+
+<option>Net Banking</option>
+
+<option>Company Card</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-box">
+
+<label>Expense Date</label>
+
+<input type="date">
+
+</div>
+
+<div class="input-box">
+
+<label>Vendor Name</label>
+
+<input type="text">
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-box">
+
+<label>Location</label>
+
+<input type="text">
+
+</div>
+
+<div class="input-box">
+
+<label>Priority</label>
+
+<select>
+
+<option>Low</option>
+
+<option>Medium</option>
+
+<option>High</option>
+
+<option>Critical</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-box full">
+
+<label>Description</label>
+
+<textarea rows="5"></textarea>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-box full">
+
+<label>Upload Receipt</label>
+
+<input type="file">
+
+</div>
+
+</div>
+
+<div class="row">
+
+<button class="submit-btn">
+
+Submit Expense
+
+</button>
+
+<button class="reset-btn" type="reset">
+
+Reset Form
+
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+<!-- ===========================
+DEPARTMENT OVERVIEW
+=========================== -->
+
+<section class="department-overview">
+
+<h1>Department Budget Overview</h1>
+
+<div class="department-grid">
+
+<div class="department-card">
+
+<h2>IT Department</h2>
+
+<p>Budget : ₹50,00,000</p>
+
+<p>Spent : ₹32,40,000</p>
+
+<p>Remaining : ₹17,60,000</p>
+
+</div>
+
+<div class="department-card">
+
+<h2>Finance</h2>
+
+<p>Budget : ₹25,00,000</p>
+
+<p>Spent : ₹12,20,000</p>
+
+<p>Remaining : ₹12,80,000</p>
+
+</div>
+
+<div class="department-card">
+
+<h2>Marketing</h2>
+
+<p>Budget : ₹40,00,000</p>
+
+<p>Spent : ₹28,70,000</p>
+
+<p>Remaining : ₹11,30,000</p>
+
+</div>
+
+<div class="department-card">
+
+<h2>HR</h2>
+
+<p>Budget : ₹15,00,000</p>
+
+<p>Spent : ₹8,90,000</p>
+
+<p>Remaining : ₹6,10,000</p>
+
+</div>
+
+</div>
+
+</section> 
+  <!-- ===================================================== -->
+<!-- EXPENSE HISTORY -->
+<!-- ===================================================== -->
+
+<section id="history" class="expense-history">
+
+    <div class="section-title">
+        <h1>Expense History</h1>
+        <p>View and manage all submitted employee expenses.</p>
+    </div>
+
+    <div class="search-filter">
+
+        <input type="text" id="searchExpense"
+            placeholder="Search by Employee, Department, Category...">
+
+        <select id="filterDepartment">
+            <option>All Departments</option>
+            <option>IT</option>
+            <option>Finance</option>
+            <option>Marketing</option>
+            <option>HR</option>
+        </select>
+
+        <select id="filterStatus">
+            <option>All Status</option>
+            <option>Approved</option>
+            <option>Pending</option>
+            <option>Rejected</option>
+        </select>
+
+        <button class="search-btn">
+            Search
+        </button>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Employee</th>
+                <th>Department</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="expenseTable">
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- MANAGER APPROVAL -->
+<!-- ===================================================== -->
+
+<section class="approval-section">
+
+<h1>Manager Approval Center</h1>
+
+<div class="approval-grid">
+
+<div class="approval-card">
+
+<h2>Pending Requests</h2>
+
+<h1>32</h1>
+
+<p>Waiting for Approval</p>
+
+</div>
+
+<div class="approval-card">
+
+<h2>Approved</h2>
+
+<h1>248</h1>
+
+<p>Successfully Approved</p>
+
+</div>
+
+<div class="approval-card">
+
+<h2>Rejected</h2>
+
+<h1>8</h1>
+
+<p>Rejected Claims</p>
+
+</div>
+
+<div class="approval-card">
+
+<h2>Under Review</h2>
+
+<h1>12</h1>
+
+<p>Finance Verification</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- ANALYTICS -->
+<!-- ===================================================== -->
+
+<section id="reports" class="analytics">
+
+<h1>Expense Analytics</h1>
+
+<div class="analytics-grid">
+
+<div class="analytics-box">
+
+<h2>Monthly Expense</h2>
+
+<canvas id="monthlyChart"></canvas>
+
+</div>
+
+<div class="analytics-box">
+
+<h2>Department Analysis</h2>
+
+<canvas id="departmentChart"></canvas>
+
+</div>
+
+<div class="analytics-box">
+
+<h2>Category Analysis</h2>
+
+<canvas id="categoryChart"></canvas>
+
+</div>
+
+<div class="analytics-box">
+
+<h2>Expense Trend</h2>
+
+<canvas id="trendChart"></canvas>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- RECENT ACTIVITY -->
+<!-- ===================================================== -->
+
+<section class="activity">
+
+<h1>Recent Activities</h1>
+
+<div class="activity-card">
+
+<ul>
+
+<li>✔ Employee Expense Submitted</li>
+
+<li>✔ Finance Team Approved Expense</li>
+
+<li>✔ Receipt Uploaded Successfully</li>
+
+<li>✔ Monthly Report Generated</li>
+
+<li>✔ Budget Updated</li>
+
+<li>✔ Cloud Backup Completed</li>
+
+<li>✔ DynamoDB Synced Successfully</li>
+
+<li>✔ AWS Lambda Executed</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- AWS CLOUD ARCHITECTURE -->
+<!-- ===================================================== -->
+
+<section class="cloud">
+
+<h1>Cloud Architecture</h1>
+
+<div class="cloud-grid">
+
+<div class="cloud-card">
+
+<i class="fa-solid fa-globe"></i>
+
+<h2>User</h2>
+
+</div>
+
+<div class="cloud-card">
+
+<i class="fa-solid fa-cloud"></i>
+
+<h2>Amazon CloudFront</h2>
+
+</div>
+
+<div class="cloud-card">
+
+<i class="fa-solid fa-server"></i>
+
+<h2>Amazon S3</h2>
+
+</div>
+
+<div class="cloud-card">
+
+<i class="fa-solid fa-network-wired"></i>
+
+<h2>API Gateway</h2>
+
+</div>
+
+<div class="cloud-card">
+
+<i class="fa-solid fa-code"></i>
+
+<h2>AWS Lambda</h2>
+
+</div>
+
+<div class="cloud-card">
+
+<i class="fa-solid fa-database"></i>
+
+<h2>Amazon DynamoDB</h2>
+
+</div>
+
+<div class="cloud-card">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h2>CloudWatch</h2>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- CONTACT -->
+<!-- ===================================================== -->
+
+<section id="contact" class="contact">
+
+<h1>Contact Information</h1>
+
+<div class="contact-grid">
+
+<div>
+
+<h2>Corporate Office</h2>
+
+
+
+<p>Chennai, Tamil Nadu</p>
+
+<p>India</p>
+
+</div>
+
+<div>
+
+<h2>Email</h2>
+
+<p>support@cloudexpense.com</p>
+
+<p>finance@cloudexpense.com</p>
+
+</div>
+
+<div>
+
+<h2>Support</h2>
+
+<p>+91-9876543210</p>
+
+<p>Mon - Fri (9 AM - 6 PM)</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<footer>
+
+<div class="footer-content">
+
+<h2>
+
+
+
+</h2>
+
+<p>
+
+Enterprise Cloud Expense Management System
+
+</p>
+
+<div class="footer-links">
+
+<a href="#">Privacy Policy</a>
+
+<a href="#">Terms & Conditions</a>
+
+<a href="#">Support</a>
+
+<a href="#">Documentation</a>
+
+</div>
+
+<p>
+
+Powered By
+
+AWS Lambda |
+
+Amazon API Gateway |
+
+Amazon DynamoDB |
+
+Amazon S3 |
+
+Amazon CloudFront
+
+</p>
+
+<p>
+
+Version 1.0.0 Enterprise Edition
+
+</p>
+
+<p>
+
+© 2026 . All Rights Reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
